@@ -9,4 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "Peach"
   end
 
+  get "/" do
+    erb :"/index"
+  end
+
 end
