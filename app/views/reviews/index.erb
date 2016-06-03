@@ -1,1 +1,4 @@
-index.erb
+<% @reviews.each do |review| %>
+  <%= review.content %>
+  by: <%= review.user.username %>
+<%end%>

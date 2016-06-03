@@ -1,6 +1,7 @@
 class ReviewController < ApplicationController
 
   get "/reviews" do
+    @reviews = Review.all
     erb :"/reviews/index"
   end
 
@@ -9,7 +10,7 @@ class ReviewController < ApplicationController
   end
 
   post "/reviews" do
-    @review = Review.create(content: params[:content])
+    @review = Helpers.current_user(session).reviews.create(content: params[:content])
     redirect to "/reviews"
   end
 
