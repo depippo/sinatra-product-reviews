@@ -1,8 +1,9 @@
 <% @reviews.each do |review| %>
   <h3>  <%= review.content %> </h3>
-  review of <%= review.product.name %>
-  <br></br>
+  <h4>review of <%= review.product.name %></h4>
   <p>by: <a href="/users/<%=review.user.slug%>"><%= review.user.username %></p>
+  <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
+
 <%end%>
 <br></br>
 <a href="/reviews/new"><input type="submit" value="Create a new review"></a>

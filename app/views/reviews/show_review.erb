@@ -1,6 +1,14 @@
-<h2> <%= @review.content %> </h2>
+<h2>Review of <%= @review.product.name %> </h2>
+<h3>by <%= @review.user.username %> </h3>
+<p> <%= @review.content %> </p>
+<br></br>
 
+<a href="/reviews/<%=@review.id%>/edit"><input type="submit" Value="Edit Review"></a>
+<br></br>
 <form action="/reviews/<%=@review.id%>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" Value="Delete Review">
 </form>
+<br></br>
+
+<a href="/tweets">Return to reviews</a>
