@@ -1,0 +1,15 @@
+<h2><%=@product.name%></h2>
+
+<% @product.reviews.each do |review| %>
+  <p> <%=review.content%> </p>
+  <p> by: <%=review.user.username%> </p>
+
+  <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
+  <br></br>
+<% end %>
+
+<br></br>
+
+<a href="/products">Return to products</a>
+<br></br>
+<a href="/logout"><input type="submit" value="Log Out"></a>

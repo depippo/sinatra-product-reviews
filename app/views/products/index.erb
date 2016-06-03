@@ -1,1 +1,5 @@
-index.erb
+<h2>Click on a product to all of its reviews.</h2>
+
+<% @products.each do |product| %>
+  <h3> <a href="/products/<%=product.slug%>"><%=product.name%></a> </h3>
+<%end%>
