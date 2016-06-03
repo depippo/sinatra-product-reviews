@@ -1,3 +1,7 @@
+<% if @failure_message %>
+  <%= @failure_message %>
+<% end %>
+
 <form action="/reviews" method="POST">
 
 <h3>Enter the name of the product you would like to review:</h3>

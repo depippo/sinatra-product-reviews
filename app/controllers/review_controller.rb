@@ -12,6 +12,8 @@ class ReviewController < ApplicationController
   get "/reviews/new" do
     if Helpers.is_logged_in?(session)
       @products = Product.all
+      @failure_message = session[:failure_message]
+      session[:failure_message] = nil
       erb :"/reviews/create_review"
     else
       redirect to "/login"
@@ -24,15 +26,19 @@ class ReviewController < ApplicationController
       @review.user = Helpers.current_user(session)
       @review.product = Product.find_or_create_by(name: params["Product Name"])
       @review.save
-      redirect to "/reviews"
+      session[:success_message] = "Successfully created review."
+      redirect to "/reviews/#{@review.id}"
     else
+      session[:failure_message] = "Please enter the name of product you're reviewing, and type a review in the text box."
       redirect to "/reviews/new"
     end
   end
 
   get '/reviews/:id' do
-  if Helpers.is_logged_in?(session)
-    @review = Review.find(params[:id])
+    if Helpers.is_logged_in?(session)
+      @review = Review.find(params[:id])
+      @success_message = session[:success_message]
+      session[:success_message] = nil
       erb :'/reviews/show_review'
     else
       redirect to "/login"
