@@ -1,16 +1,17 @@
 <form action="/reviews" method="POST">
 
-<h2>Enter the name of the product:</h2>
+<h3>Enter the name of the product you would like to review:</h3>
 <input type="text" name="Product Name">
 
-<select name="golf_bag_id">
+<h3>Or select an existing product from the menu:</h3>
+<select name="product_id">
   <% @products.each do |product| %>
     <option value=<%=product.id %>><%= product.name %></option>
   <% end %>
 </select>
 
-<h2>Enter your review here:</h2>
-<input type="text" name="content">
+<h3>Enter your review here:</h3>
+<textarea rows="7" cols="70" type="text" name="content"></textarea>
 
 <input type="submit" value="submit">
 
