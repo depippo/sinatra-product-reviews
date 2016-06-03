@@ -4,12 +4,15 @@ class UserController < ApplicationController
     if Helpers.is_logged_in?(session)
       redirect to "/reviews"
     else
+      @failure_message = session[:failure_message]
+      session[:failure_message] = nil
       erb :'/users/signup'
     end
   end
 
   post '/signup' do
     if params[:username] == "" || params[:password] == ""
+      session[:failure_message] = "Please enter a username and a password."
       redirect to "/signup"
     else
       @user = User.new(params)
@@ -23,6 +26,8 @@ class UserController < ApplicationController
     if Helpers.is_logged_in?(session)
       redirect to "/reviews"
     else
+      @failure_message = session[:failure_message]
+      session[:failure_message] = nil
       erb :'/users/login'
     end
   end
@@ -33,6 +38,7 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect to "/reviews"
     else
+      session[:failure_message] = "Invalid username/password. Please try again."
       redirect to "/login"
     end
   end
