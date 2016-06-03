@@ -19,7 +19,7 @@ class ReviewController < ApplicationController
   end
 
   post "/reviews" do
-    if params[:content] != ""
+    if params[:content] != "" && params["Product Name"] !=""
       @review = Review.create(content: params[:content])
       @review.user = Helpers.current_user(session)
       @review.product = Product.find_or_create_by(name: params["Product Name"])
