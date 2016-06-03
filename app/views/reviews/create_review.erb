@@ -1,7 +1,13 @@
 <form action="/reviews" method="POST">
 
 <h2>Enter the name of the product:</h2>
-<input type="text" name="product[name]">
+<input type="text" name="Product Name">
+
+<select name="golf_bag_id">
+  <% @products.each do |product| %>
+    <option value=<%=product.id %>><%= product.name %></option>
+  <% end %>
+</select>
 
 <h2>Enter your review here:</h2>
 <input type="text" name="content">

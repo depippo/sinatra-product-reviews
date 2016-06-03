@@ -1,1 +1,6 @@
-show_review.erb
+<h2> <%= @review.content %> </h2>
+
+<form action="/reviews/<%=@review.id%>/delete" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" Value="Delete Review">
+</form>
