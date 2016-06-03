@@ -1,0 +1,15 @@
+<h2><%=@user.username%>'s Reviews</h2>
+
+<% @user.reviews.each do |review| %>
+  <h3> <%=review.product.name %> </h3>
+  <p> <%=review.content%> </p>
+  <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
+  <% if review.user_id == Helpers.current_user(session).id %>
+    <a href="/review/<%=review.id%>/edit"><input type="submit" value="Edit review"></a>
+    <%end%>
+  <br></br>
+<% end %>
+
+<a href="/reviews/new"><input type="submit" value="Create a new review"></a>
+<br></br>
+<a href="/logout"><input type="submit" value="Log Out"></a>
