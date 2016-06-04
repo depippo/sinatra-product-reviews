@@ -11,8 +11,12 @@
   <p> <%=review.content%> </p>
   <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
   <% if review.user_id == Helpers.current_user(session).id %>
-    <a href="/review/<%=review.id%>/edit"><input type="submit" value="Edit review"></a>
-    <a href="/review/<%=review.id%>/delete"><input type="submit" value="Delete review"></a>
+    <a href="/reviews/<%=review.id%>/edit"><input type="submit" value="Edit review"></a>
+    <br></br>
+    <form action="/reviews/<%=review.id%>/delete" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" Value="Delete review">
+    </form>
     <%end%>
   <hr>
 <% end %>
