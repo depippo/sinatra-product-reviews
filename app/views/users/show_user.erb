@@ -6,6 +6,7 @@
   <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
   <% if review.user_id == Helpers.current_user(session).id %>
     <a href="/review/<%=review.id%>/edit"><input type="submit" value="Edit review"></a>
+    <a href="/review/<%=review.id%>/delete"><input type="submit" value="Delete review"></a>
     <%end%>
   <br></br>
 <% end %>

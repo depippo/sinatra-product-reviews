@@ -7,12 +7,14 @@
 <p> <%= @review.content %> </p>
 <br></br>
 
-<a href="/reviews/<%=@review.id%>/edit"><input type="submit" Value="Edit Review"></a>
-<br></br>
-<form action="/reviews/<%=@review.id%>/delete" method="POST">
-  <input type="hidden" id="hidden" name="_method" value="DELETE">
-  <input type="submit" Value="Delete Review">
-</form>
-<br></br>
+<% if @review.user_id == Helpers.current_user(session).id %>
+  <a href="/reviews/<%=@review.id%>/edit"><input type="submit" Value="Edit Review"></a>
+  <br></br>
+  <form action="/reviews/<%=@review.id%>/delete" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input type="submit" Value="Delete Review">
+  </form>
+  <%end%>
+  <br></br>
 
-<a href="/tweets">Return to reviews</a>
+<a href="/reviews">Return to reviews</a>
