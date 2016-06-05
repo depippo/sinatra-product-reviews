@@ -76,10 +76,8 @@ class ReviewController < ApplicationController
     @review = Review.find(params[:id])
     if @review.user_id == Helpers.current_user(session).id
       @review.destroy
-      redirect to "/reviews"
-    else
-      erb :'/reviews/error'
     end
+    redirect to "/reviews"
   end
 
 end
