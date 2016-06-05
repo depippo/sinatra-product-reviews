@@ -1,14 +1,13 @@
 <h2><%=@product.name%></h2>
+<hr>
 
 <% @product.reviews.each do |review| %>
   <p> <%=review.content%> </p>
-  <p> by: <%=review.user.username%> </p>
+  <p>by: <a href="/users/<%=review.user.slug%>"><%= review.user.username %></p>
 
   <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
-  <br></br>
+  <hr>
 <% end %>
-
-<br></br>
 
 <a href="/products"><input type="submit" value="Return to products page"></a>
 <a href="/reviews"><input type="submit" value="Return to main reviews page"></a>

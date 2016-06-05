@@ -7,10 +7,10 @@
 <br></br>
 <a href="/logout"><input type="submit" value="Log Out"></a>
 
-<h2>All users' reviews:</h2>
+<h2>All reviews:</h2>
 <hr>
 <% @reviews.each do |review| %>
-  <h3>  <%= review.content %> </h3>
+  <p>  <%= review.content %> </p>
   <h4>review of <a href="/products/<%=review.product.slug%>"><%= review.product.name %></h4></a>
   <p>by: <a href="/users/<%=review.user.slug%>"><%= review.user.username %></p>
   <a href="/reviews/<%=review.id%>"><input type="submit" value="View review"></a>
