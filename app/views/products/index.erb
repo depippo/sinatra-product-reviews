@@ -1,4 +1,5 @@
 <h2>Click on a product to see all of its reviews.</h2>
+<a href="/reviews"><input type="submit" value="Return to main reviews page"></a>
 
 <% @products.each do |product| %>
   <h3> <a href="/products/<%=product.slug%>"><%=product.name%></a> </h3>

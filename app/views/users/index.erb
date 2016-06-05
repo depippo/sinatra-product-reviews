@@ -1,5 +1,7 @@
 <h2>Click on a user to see their reviews.</h2>
 
+<a href="/reviews"><input type="submit" value="Return to main reviews page"></a>
+
 <% @users.each do |user| %>
   <% count = user.reviews.count %>
   <h3> <a href="/users/<%=user.slug%>"><%=user.username%></a> - <%=user.reviews.count%> <%= count == 1 ? ("review") : ("reviews") %> </h3>
