@@ -5,7 +5,6 @@
 <h2>Review of <%= @review.product.name %> </h2>
 <h3>by <%= @review.user.username %> </h3>
 <p> <%= @review.content %> </p>
-<br></br>
 
 <% if @review.user_id == Helpers.current_user(session).id %>
   <a href="/reviews/<%=@review.id%>/edit"><input type="submit" Value="Edit Review"></a>

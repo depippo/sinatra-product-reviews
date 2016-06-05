@@ -49,6 +49,8 @@ class ReviewController < ApplicationController
     if Helpers.is_logged_in?(session)
       @review = Review.find(params[:id])
       if @review.user_id == Helpers.current_user(session).id
+        @failure_message = session[:failure_message]
+        session[:failure_message] = nil
         erb :'/reviews/edit_review'
       else
         redirect to "/reviews"
@@ -62,8 +64,10 @@ class ReviewController < ApplicationController
     @review = Review.find(params[:id])
     if params[:content] != ""
       @review.update(content: params[:content])
-      redirect to "/reviews"
+      session[:success_message] = "Review successfully updated."
+      redirect to "/reviews/#{@review.id}"
     else
+      session[:failure_message] = "Your review cannot be empty."
       redirect to "/reviews/#{@review.id}/edit"
     end
   end
